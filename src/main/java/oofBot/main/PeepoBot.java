@@ -1,5 +1,11 @@
 package oofBot.main;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
 import javax.security.auth.login.LoginException;
 
 import com.jagrosh.jdautilities.command.CommandClient;
@@ -30,8 +36,9 @@ public class PeepoBot {
 	
 	public static void main(String[] args) throws LoginException {
 		JDABuilder builder = new JDABuilder(AccountType.BOT);
-		String token = new String("NTUwNDE2Nzk1MjMyODk1MDAx.XOokCQ.LiEimsOYrHRdJwpynDXoIFELW5U");
-		builder.setToken(token);
+		
+		// must have a PeepoBot.properties file in the same directory of execution that contains the token for the bot
+		builder.setToken(getBotToken());
 		
 		EventWaiter waiter = new EventWaiter();
 		
@@ -94,5 +101,24 @@ public class PeepoBot {
 		builder.addEventListener(waiter);
 		builder.addEventListener(commandClient);
 		jda = builder.build();
+	}
+	
+	public static String getBotToken() {
+		Properties props = new Properties();
+		
+		File jarPath = new File(PeepoBot.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+		String propsPath = jarPath.getParentFile().getAbsolutePath();
+		try {
+			props.load(new FileInputStream(propsPath + "/PeepoBot.properties"));
+		} catch (FileNotFoundException e) {
+			System.out.println("PeepoBot.properties was not found.");
+			e.printStackTrace();
+			return null;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		return props.getProperty("token");
 	}
 }
