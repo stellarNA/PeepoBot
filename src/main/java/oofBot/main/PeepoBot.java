@@ -79,7 +79,7 @@ public class PeepoBot {
 		commandBuilder.addCommands(
 			new HoneyMustard(),
 			new Bean(),
-			new Autism()
+			new Screech()
 		);
 		
 		//Moderation Commands

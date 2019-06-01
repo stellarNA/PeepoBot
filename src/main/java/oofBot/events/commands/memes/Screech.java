@@ -9,7 +9,7 @@ import oofBot.resources.audio.MusicPlayerManager;
 
 public class Screech extends ToggleCommand {
 	
-	public Sceech() {
+	public Screech() {
 		this.name = "ree";
 		this.aliases = new String[] {"Ree"};
 		this.help = "REEEEEEEE";
