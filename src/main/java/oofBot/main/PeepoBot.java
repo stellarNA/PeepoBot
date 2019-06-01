@@ -92,7 +92,8 @@ public class PeepoBot {
 		commandBuilder.addCommands(
 			new Shutdown(),
 			new ChangePresence(),
-			new TestCommand(waiter)
+			new TestCommand(waiter),
+			new Birthday()
 		);
 		
 		commandClient = commandBuilder.build();
