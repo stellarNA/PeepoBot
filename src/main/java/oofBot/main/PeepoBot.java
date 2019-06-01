@@ -121,4 +121,23 @@ public class PeepoBot {
 		
 		return props.getProperty("token");
 	}
+	
+	public static String getYoutubeKey() {
+		Properties props = new Properties();
+		
+		File jarPath = new File(PeepoBot.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+		String propsPath = jarPath.getParentFile().getAbsolutePath();
+		try {
+			props.load(new FileInputStream(propsPath + "/PeepoBot.properties"));
+		} catch (FileNotFoundException e) {
+			System.out.println("PeepoBot.properties was not found.");
+			e.printStackTrace();
+			return null;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		return props.getProperty("ytAPI");
+	}
 }

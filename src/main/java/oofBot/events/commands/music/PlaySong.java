@@ -47,7 +47,7 @@ public class PlaySong extends Command {
 		
 		if (!event.getArgs().startsWith("http")) {
 			String fixedSearch = new String(event.getArgs().replaceAll(" ", "+"));
-			Unirest.get("https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyDb1h7uxQ1bvPy_qQM00IoK6ZTyHJjGteg&type=video&q=" + fixedSearch).asJsonAsync(new Callback<JsonNode>() {
+			Unirest.get("https://www.googleapis.com/youtube/v3/search?part=snippet&key=" + PeepoBot.getYoutubeKey() + "&type=video&q=" + fixedSearch).asJsonAsync(new Callback<JsonNode>() {
 				@Override
 				public void completed(HttpResponse<JsonNode> response) {
 					JSONObject obj = response.getBody().getObject();
