@@ -7,11 +7,11 @@ import oofBot.resources.ToggleCommand;
 import oofBot.resources.ToggleListManager;
 import oofBot.resources.audio.MusicPlayerManager;
 
-public class Autism extends ToggleCommand {
+public class Screech extends ToggleCommand {
 	
-	public Autism() {
-		this.name = "autism";
-		this.aliases = new String[] {"Autism"};
+	public Sceech() {
+		this.name = "ree";
+		this.aliases = new String[] {"Ree"};
 		this.help = "REEEEEEEE";
 		this.category = new Category("Memes");
 	}
